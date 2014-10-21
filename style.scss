@@ -1,6 +1,23 @@
 $ws-cell-size: 40px;
 $ws-cell-font-size: 30px;
 
+html {
+  font-family: Ariel, sans-serif;
+}
+
+.ws-grid {
+  float: left;
+}
+
+.word-list {
+  float: left;
+  list-style-type: none;
+}
+
+section {
+  clear: both;
+}
+
 .ws-grid {
   display: inline-block;
   line-height: normal;
