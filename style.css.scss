@@ -1,0 +1,59 @@
+$ws-cell-size: 40px;
+$ws-cell-font-size: 30px;
+
+.ws-grid {
+  display: inline-block;
+  line-height: normal;
+}
+
+.word {
+  margin: 5px;
+}
+
+.ws-cell {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: $ws-cell-size;
+  height: $ws-cell-size;
+  font-size: $ws-cell-font-size;
+
+  position: relative;
+
+  transition: background 0.9s;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  // These div elements represent highlights for found words
+  div {
+    position: absolute;
+    display: inline-block;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    width: $ws-cell-size;
+    height: $ws-cell-size;
+  }
+}
+
+$colors: orangered, limegreen, cyan, gold, mediumvioletred;
+
+@each $color in $colors {
+  $i: index($colors, $color);
+
+  .ws-grid.color#{$i} {
+    .ws-cell:hover { transition: background 0.2s; background: rgba($color, 0.2); }
+    .ws-cell.selected { transition: background 0.2s; background: rgba($color, 0.3); }
+    .ws-cell.path { transition: background 0.2s; background: rgba($color, 0.3); }
+    .ws-cell.correct-path { transition: background 0.2s; background: rgba($color, 0.5); }
+  }
+
+  .ws-cell div.solved.color#{$i} { transition: background 0.2s; background: rgba($color, 0.6); }
+
+  .word.solved.color#{$i} { color: $color; text-decoration: line-through; } 
+}

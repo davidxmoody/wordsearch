@@ -1,0 +1,78 @@
+---
+layout: narrow
+title: Wordsearch
+collection: games
+screenshot: /images/game-screenshots/wordsearch.png
+styles: style.css
+scripts:
+  - //ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js
+  - //cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js
+  - script.js
+---
+
+<div ng-app="wordsearchApp" ng-controller="WordsearchCtrl">
+
+  <!--[if lt IE 9]>
+    <p class="browsehappy">Oh no! This game won't work in your browser.
+    Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">How to play</h2>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <p>Search for the words hidden within the grid. To submit a word, click the first letter of it and then the last letter.</p>
+          <p>Each level is more difficult than the last and the game continues forever.</p>
+        </div>
+        <div class="col-sm-6">
+          <p><span class="badge">Hint</span>
+          Words can be written in any direction including backwards and along diagonals.</p>
+
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="levelSelect" data-toggle="dropdown">
+              Select level ({{ currentLevel.width }}x{{ currentLevel.height }})
+              <span class="caret"></span>
+            </button>
+            <ul id="level-select-dropdown" class="dropdown-menu">
+              <li ng-repeat="level in levels">
+                <a href="javascript:void(0)" ng-click="loadLevel(level)">
+                  {{ level.width }}x{{ level.height }}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-6 text-center">
+      <div class="ws-grid" ng-class='colorClass'>
+        <div ng-repeat="row in grid.cells">
+    
+          <div class="ws-cell" ng-repeat="cell in row"
+               ng-click="cellClicked(cell)"
+               ng-mouseenter="updatePath(cell)"
+               ng-mouseleave="selectedCell && clearPath()"
+               ng-class="{selected: cell.isSelected, path: cell.onPath, 'correct-path': cell.onCorrectPath}">
+            <div class="solved" ng-class="colorClass" 
+                 ng-repeat="colorClass in cell.solvedColorClasses track by $index"></div>
+            {{cell.letter}}
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-sm-6 text-center">
+      <button type="button" class="btn btn-lg btn-default word" ng-repeat="word in words">{{word}}</button>
+      <button class="btn btn-lg btn-default word solved" ng-class="word.colorClass" ng-repeat="word in foundWords">{{word.word}}</button>
+    </div>
+  </div>
+
+</div>
