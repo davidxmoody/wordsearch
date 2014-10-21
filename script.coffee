@@ -1,5 +1,5 @@
-angular = require 'angular'
-_ = require 'underscore'
+#angular = require 'angular'
+#_ = require 'underscore'
 defaultWordlist = [
   'ARCHAEOPTERYX'
   'CARBONIFEROUS'
