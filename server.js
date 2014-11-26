@@ -5,7 +5,7 @@ var app = koa();
 
 var highscores = { 'Me': 1010 };
 
-app.use(serve('.'));
+app.use(serve('build'));
 
 app.use(route.get('/highscores', function *() {
   this.body = JSON.stringify(highscores);
