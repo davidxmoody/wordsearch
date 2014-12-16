@@ -1,19 +1,16 @@
-var koa = require('koa');
-var serve = require('koa-static');
-var route = require('koa-route');
-var app = koa();
+var express = require('express');
+var app = express();
 
 var highscores = { 'Me': 1010 };
 
-app.use(serve('build'));
+app.use(express.static(__dirname + '/build'));
 
-app.use(route.get('/highscores', function *() {
-  this.body = JSON.stringify(highscores);
-}));
+app.get('/highscores', function(req, res) {
+  res.send(JSON.stringify(highscores));
+});
 
-app.use(route.get('/highscores/:score', function *(score) {
-  highscores['You'] = score;
-  this.body = "High score submitted, thank you.";
-}));
+app.get('/highscores/:score', function(req, res) {
+  highscores['You'] = req.params.score;
+});
 
-app.listen(3000);
+var server = app.listen(3000);
