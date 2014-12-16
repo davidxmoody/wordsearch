@@ -244,6 +244,7 @@ angular.module('wordsearchApp', []).controller 'WordsearchCtrl', ['$scope', ($sc
   $scope.cellClicked = (cell) ->
     return unless $scope.enableInput
     if not $scope.selectedCell?
+      console.log('hello world')
       cell.isSelected = true
       $scope.selectedCell = cell
     else

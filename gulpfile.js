@@ -2,7 +2,9 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var coffee = require('gulp-coffee');
 
-gulp.task('default', ['css', 'js'], function() {
+gulp.task('default', ['css', 'js', 'html']);
+
+gulp.task('html', function() {
   gulp.src('src/*.html')
     .pipe(gulp.dest('build'));
 });

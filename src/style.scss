@@ -60,8 +60,8 @@ section {
 
 $colors: orangered, limegreen, cyan, gold, mediumvioletred;
 
-@each $color in $colors {
-  $i: index($colors, $color);
+@for $i from 1 through length($colors) {
+  $color: nth($colors, $i);
 
   .ws-grid.color#{$i} {
     .ws-cell:hover { transition: background 0.2s; background: rgba($color, 0.2); }
