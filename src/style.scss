@@ -1,6 +1,9 @@
 $ws-cell-size: 40px;
 $ws-cell-font-size: 30px;
 
+.demo-word, .test-word {
+}
+
 html {
   font-family: Ariel, sans-serif;
 }
@@ -12,10 +15,6 @@ html {
 .word-list {
   float: left;
   list-style-type: none;
-}
-
-section {
-  clear: both;
 }
 
 .ws-grid {

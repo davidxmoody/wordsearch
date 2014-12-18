@@ -219,7 +219,7 @@ class LetterGrid
 
 
 
-angular.module('wordsearchApp', []).controller 'WordsearchCtrl', ['$scope', ($scope) ->
+angular.module('wordsearchApp', ['ngDialog']).controller 'WordsearchCtrl', ['$scope', 'ngDialog', ($scope, ngDialog) ->
 
   $scope.levels = [
     { width: 8, height: 8 }
@@ -291,4 +291,9 @@ angular.module('wordsearchApp', []).controller 'WordsearchCtrl', ['$scope', ($sc
   $scope.nextColor = ->
     $scope.colorIndex = $scope.colorIndex%NUM_COLORS+1
     $scope.colorClass = "color#{$scope.colorIndex}"
+
+  # Show intro dialog
+  ngDialog.open(
+    template: 'how-to-play.html'
+  )
 ]

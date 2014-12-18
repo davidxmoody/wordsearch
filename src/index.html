@@ -8,48 +8,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.3.7/css/ngDialog.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.3.7/css/ngDialog-theme-default.min.css">
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.3.7/js/ngDialog.min.js"></script>
   <script src="script.js"></script>
 </head>
 <body ng-app="wordsearchApp" ng-controller="WordsearchCtrl">
   
-  <section>
-    <h2>How to play</h2>
-    <p>Click on the first letter of a word. Move/drag the cursor to the end of the word.</p>
-    <p>WORD</p>
-    <p>Try it out now!</p>
-    <p>BEGIN</p>
-  </section>
+  <h2>Play now</h2>
+  <div class="ws-grid" ng-class='colorClass'>
+    <div ng-repeat="row in grid.cells">
   
-  <section>
-    <h2>Play now</h2>
-    <div class="ws-grid" ng-class='colorClass'>
-      <div ng-repeat="row in grid.cells">
-    
-        <div class="ws-cell" ng-repeat="cell in row"
-             ng-click="cellClicked(cell)"
-             ng-mouseenter="updatePath(cell)"
-             ng-mouseleave="selectedCell && clearPath()"
-             ng-class="{selected: cell.isSelected, path: cell.onPath, 'correct-path': cell.onCorrectPath}">
-          <div class="solved" ng-class="colorClass" 
-               ng-repeat="colorClass in cell.solvedColorClasses track by $index"></div>
-          {{cell.letter}}
-        </div>
-        
+      <div class="ws-cell" ng-repeat="cell in row"
+           ng-click="cellClicked(cell)"
+           ng-mouseenter="updatePath(cell)"
+           ng-mouseleave="selectedCell && clearPath()"
+           ng-class="{selected: cell.isSelected, path: cell.onPath, 'correct-path': cell.onCorrectPath}">
+        <div class="solved" ng-class="colorClass" 
+             ng-repeat="colorClass in cell.solvedColorClasses track by $index"></div>
+        {{cell.letter}}
       </div>
+      
     </div>
+  </div>
 
-    <ul class="word-list">
-      <li class="word" ng-repeat="word in words">{{word}}</li>
-      <li class="word solved" ng-class="word.colorClass" ng-repeat="word in foundWords">{{word.word}}</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>High scores</h2>
-    <p>TODO: put high scores here</p>
-  </section>
+  <ul class="word-list">
+    <li class="word" ng-repeat="word in words">{{word}}</li>
+    <li class="word solved" ng-class="word.colorClass" ng-repeat="word in foundWords">{{word.word}}</li>
+  </ul>
 
 </body>
 </html>
