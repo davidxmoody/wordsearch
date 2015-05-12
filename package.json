@@ -8,7 +8,7 @@
     "start": "gulp watch & node ./server.js",
     "build": "gulp"
   },
-  "author": "David Moody <david@davidxmoody.com> (http://davidxmoody.com/)",
+  "author": "David Moody <david@davidxmoody.com> (https://davidxmoody.com/)",
   "license": "MIT",
   "dependencies": {
     "gulp": "^3.8.10",
