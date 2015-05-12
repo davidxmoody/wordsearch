@@ -5,15 +5,14 @@
   "description": "A simple wordsearch game",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp watch & node ./server.js",
+    "start": "webpack-dev-server --content-base build/",
     "build": "gulp"
   },
   "author": "David Moody <david@davidxmoody.com> (https://davidxmoody.com/)",
   "license": "MIT",
   "dependencies": {
-    "gulp": "^3.8.10",
-    "gulp-coffee": "^2.2.0",
-    "gulp-sass": "^1.1.0",
-    "express": "~4.10.6"
+    "node-libs-browser": "^0.5.0",
+    "webpack": "^1.9.4",
+    "webpack-dev-server": "^1.8.2"
   }
 }
