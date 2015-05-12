@@ -8,6 +8,7 @@ require 'ng-dialog'
 _ = require 'underscore'
 
 defaultWordlist = require './default-wordlist'
+howToPlayHTML = require './how-to-play.html'
 
 # Number of available color classes defined in the Sass file
 # Note that this must manually be kept up to date
@@ -202,6 +203,7 @@ angular.module('wordsearchApp', ['ngDialog']).controller 'WordsearchCtrl', ['$sc
 
   # Show intro dialog
   ngDialog.open(
-    template: 'how-to-play.html'
+    template: howToPlayHTML
+    plain: true
   )
 ]

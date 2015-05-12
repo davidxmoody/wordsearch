@@ -9,12 +9,11 @@ module.exports =
       { test: /\.coffee$/, loader: "coffee-loader" }
       { test: /\.css$/, loader: "style-loader!css-loader" }
       { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" }
+      { test: /\.html$/, loader: "html-loader" }
     ]
   resolve:
     extensions: [
       ""
       ".js"
       ".coffee"
-      ".css"
-      ".scss"
     ]
