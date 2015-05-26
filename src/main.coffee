@@ -1,13 +1,9 @@
 require './style.scss'
 
 angular = require 'angular'
-require 'ng-dialog/css/ngDialog.css'
-require 'ng-dialog/css/ngDialog-theme-default.css'
-require 'ng-dialog'
 
 _ = require 'underscore'
 
-howToPlayHTML = require './how-to-play.html'
 LetterGrid = require "./letter-grid"
 
 # Number of available color classes defined in the Sass file
@@ -23,32 +19,22 @@ wordFromPath = (path) ->
   word
 
 
-angular.module('wordsearchApp', ['ngDialog']).controller 'WordsearchCtrl', ['$scope', 'ngDialog', ($scope, ngDialog) ->
+angular.module('wordsearchApp', []).controller 'WordsearchCtrl', ['$scope', ($scope) ->
 
-  $scope.levels = [
-    { width: 8, height: 8 }
-    { width: 9, height: 9 }
-    { width: 10, height: 10 }
-    { width: 11, height: 11 }
-  ]
+  level = { width: 8, height: 8 }
+  $scope.grid = new LetterGrid(level.width, level.height)
+  $scope.words = $scope.grid.words
+  $scope.foundWords = []
 
-  $scope.loadLevel = (level) ->
-    $scope.currentLevel = level
-    $scope.grid = new LetterGrid(level.width, level.height)
-    $scope.words = $scope.grid.words
-    $scope.foundWords = []
+  $scope.enableInput = true
+  $scope.colorIndex = 1
+  $scope.colorClass = 'color1'
 
-    $scope.enableInput = true
-    $scope.colorIndex = 1
-    $scope.colorClass = 'color1'
-
-  $scope.loadLevel($scope.levels[0])
 
 
   $scope.cellClicked = (cell) ->
     return unless $scope.enableInput
     if not $scope.selectedCell?
-      console.log('hello world')
       cell.isSelected = true
       $scope.selectedCell = cell
     else
@@ -95,10 +81,4 @@ angular.module('wordsearchApp', ['ngDialog']).controller 'WordsearchCtrl', ['$sc
   $scope.nextColor = ->
     $scope.colorIndex = $scope.colorIndex%NUM_COLORS+1
     $scope.colorClass = "color#{$scope.colorIndex}"
-
-  # Show intro dialog
-  ngDialog.open(
-    template: howToPlayHTML
-    plain: true
-  )
 ]

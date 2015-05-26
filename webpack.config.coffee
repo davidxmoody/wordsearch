@@ -12,8 +12,4 @@ module.exports =
       { test: /\.html$/, loader: "html-loader" }
     ]
   resolve:
-    extensions: [
-      ""
-      ".js"
-      ".coffee"
-    ]
+    extensions: ["", ".js", ".coffee"]

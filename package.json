@@ -5,7 +5,7 @@
   "description": "A simple wordsearch game",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --content-base build/",
+    "start": "webpack-dev-server --content-base src/",
     "build": "webpack"
   },
   "author": "David Moody <david@davidxmoody.com> (https://davidxmoody.com/)",
@@ -16,7 +16,6 @@
     "coffee-script": "^1.9.2",
     "css-loader": "^0.12.0",
     "html-loader": "^0.3.0",
-    "ng-dialog": "^0.4.0",
     "node-libs-browser": "^0.5.0",
     "node-sass": "^2.1.1",
     "sass-loader": "^0.6.0",
