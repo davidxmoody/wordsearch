@@ -1,6 +1,19 @@
 $ws-cell-size: 40px;
 $ws-cell-font-size: 30px;
 
+.attribution {
+  font-size: 0.7em;
+  opacity: 0.6;
+  clear: both;
+  margin-left: 10px;
+  padding-top: 10px;
+  transition: opacity 0.5s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 html {
   font-family: Ariel, sans-serif;
 }
