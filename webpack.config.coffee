@@ -1,3 +1,5 @@
+webpack = require "webpack"
+
 module.exports =
   entry: "./src/main.coffee"
   output:
@@ -13,3 +15,6 @@ module.exports =
     ]
   resolve:
     extensions: ["", ".js", ".coffee"]
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({minimize: true})
+  ]
