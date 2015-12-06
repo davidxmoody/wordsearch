@@ -1,7 +1,5 @@
 require './style.scss'
-
 angular = require 'angular'
-
 _ = require 'underscore'
 
 LetterGrid = require "./letter-grid"
@@ -21,15 +19,13 @@ wordFromPath = (path) ->
 
 angular.module('wordsearchApp', []).controller 'WordsearchCtrl', ['$scope', ($scope) ->
 
-  level = { width: 8, height: 8 }
-  $scope.grid = new LetterGrid(level.width, level.height)
+  $scope.grid = new LetterGrid()
   $scope.words = $scope.grid.words
   $scope.foundWords = []
 
   $scope.enableInput = true
   $scope.colorIndex = 1
   $scope.colorClass = 'color1'
-
 
 
   $scope.cellClicked = (cell) ->
@@ -74,7 +70,7 @@ angular.module('wordsearchApp', []).controller 'WordsearchCtrl', ['$scope', ($sc
       if $scope.words.length is 0
         $scope.enableInput = false
         alertCongrats = ->
-          alert("Congratulations, you found all #{$scope.foundWords.length} words! Select a new difficulty level from the menu to play again.")
+          alert("Congratulations, you found all #{$scope.foundWords.length} words!")
         setTimeout(alertCongrats, 400)  # The delay allows the wordlist crossout to be updated
 
 

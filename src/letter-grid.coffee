@@ -1,13 +1,13 @@
 _ = require "underscore"
-defaultWordlist = require "./default-wordlist"
 Cell = require "./cell"
+options = require "./options"
 
 # Directions words can be placed along, shuffled to avoid repeating patterns
 DIRECTIONS = _.shuffle([ [1, 0], [0, 1], [-1, 0], [0, -1],
                          [1, 1], [1, -1], [-1, 1], [-1, -1] ])
 
 module.exports = class LetterGrid
-  constructor: (@width=8, @height=8, maxWords=20, wordlist=defaultWordlist) ->
+  constructor: (@width=options.width, @height=options.height, maxWords=options.maxWords, wordlist=options.wordlist) ->
     # Make an empty grid.
     @cells = (new Cell(x, y) for x in [0..@width-1] for y in [0..@height-1])
     @words = []
@@ -64,7 +64,6 @@ module.exports = class LetterGrid
 
 
   _getPath: (start, end) ->
-    #TODO can this be tidied up a bit?
     [x, y] = start
     [endX, endY] = end
 
