@@ -1,8 +1,10 @@
 ## About
 
-This is a wordsearch game I made with AngularJS. I originally made it for the [Professor P website](http://professorp.co.uk/games/wordsearch/). You can see the original source code in [this GitHub repository](https://github.com/davidxmoody/professorp.co.uk). 
+This is a wordsearch game I made with AngularJS. I originally made it for the [Professor P website](http://professorp.co.uk/games/wordsearch/). 
 
-This repository extracts the source code from the rest of the Professor P website and introduces a new webpack build script. It can also be run standalone in an iframe:
+It has also been adapted for the language learning site [Internet Polyglot](http://www.internetpolyglot.com/). See [here](http://www.internetpolyglot.com/word_search_game?lessonId=-2104301155) and [here](http://www.internetpolyglot.com/word_search_game?lessonId=-4602101160) for examples.
+
+The original source code can be found [here](https://github.com/davidxmoody/professorp.co.uk). This repository extracts the source code from the rest of the Professor P website and introduces a new webpack build script. It can also be run standalone in an iframe:
 
 ```html
 <iframe src="https://davidxmoody.com/wordsearch/" style="width: 600px; height: 410px"></iframe>
